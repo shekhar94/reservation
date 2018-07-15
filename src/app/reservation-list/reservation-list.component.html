@@ -1,0 +1,31 @@
+<form #reservationListForm="ngForm">
+    <div class="container list-container">
+        <h2>All reservations</h2>
+        <!-- <button type="button" (click)="onSync()" class="btn btn-success">Sync records</button> -->
+        <div class="form-group">
+            <div class="form-group">
+                <label for="startDate">Start date</label>
+                <input name="startDate" [(ngModel)]="startDate" type="date" class="form-control" id="startDate">
+                <label for="endDate">End date</label>
+                <input name="endDate" [(ngModel)]="endDate" type="date" class="form-control" id="endDate">
+            </div>
+            <div class="form-group">
+                <button type="button" (click)="onFilter(startDate, endDate)" class="btn btn-danger">Filter</button>
+            </div>
+        </div>
+        <ul>
+            <li *ngFor="let reservation of allReservations" class="info">
+                <div class="form-group">
+                    <label>Phone:</label>{{reservation.phone}}<br>
+                    <label>Email:</label>{{reservation.email}}<br>
+                    <label>Number of guests:</label>{{reservation.noOfGuests}}<br>
+                    <label>Start date:</label>{{reservation.startDate}}<br>
+                    <label>End date:</label>{{reservation.endDate}}<br>
+                    <label>Comments:</label>{{reservation.comments}}
+                </div>
+                <button type="submit" (click)="onUpdate(reservation._id)" class="btn btn-success">Update</button>
+                <button type="submit" (click)="onDelete(reservation._id)" class="btn btn-danger">Delete</button>
+            </li>
+        </ul>
+    </div>
+</form>
